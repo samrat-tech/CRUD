@@ -1,0 +1,41 @@
+{% extends 'crud_templates/layout.html' %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block body %}
+        <!-- Page Header-->
+        <div class="container container-fluid">
+            <header style="text-align: center">
+                <h5 class="welcome-text">Student's Details</h5>
+            </header>
+            <!-- Main Content-->
+            <div class="form-row text-center clearfix">
+                <a href="add_details"><button class="btn btn-secondary float-start">Add Details</button></a>
+            </div>
+            <hr>
+            <h2 class="text-center">Students Table</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">RN</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Operations</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for detail in details %}
+                    <tr>
+                      <td>{{ detail.roll }}</td>
+                      <td>{{ detail.name }}</td>
+                      <td>{{ detail.age }}</td>
+                      <td><a href="{% url 'edit_data' detail.roll %}"><button class="btn btn-secondary btn-sm">Edit</button></a></td>
+                      <td><a href="{% url 'delete' detail.roll %}"><button class="btn btn-secondary btn-sm">Delete</button></a></td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+{% endblock %}
